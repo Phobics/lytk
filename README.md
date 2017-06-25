@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>🔥lyt.fyi🔥 - highest cpm link shortener</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+	<script>
+		videos = ['rVjLNoSLFzQ', '22cHkWbqltY'];
+		shortenedLink = "http://kazok.men/";
+	</script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-87663285-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+</head>
+<body style="padding: 0px 0px 0px; margin: 0px 0px 0px; overflow: hidden">
+    <div>
+        <div style="width:100%; position:absolute; padding-left: 16px; z-index: 1000; top:0px; left:0px; background-color: #F7F7F7; height: 68px;border-bottom: 2px solid #FFD337">
+            <div style="float: left; display: inline-block;">
+                <a href="http://lyt.fyi"><h1 style="color: #6D6D6D; display: inline-block; font-weight: 500; font-family: 'Montserrat', sans-serif;">🔥lyt.fyi🔥</h1></a>
+            </div>
+            <div style="float: right; text-align: right; display: inline-block">
+                <div style="position: absolute; bottom: 0px; right: 16px">
+                    <p style="display: inline-block; font-size: 12px; font-family: 'Montserrat', sans-serif;">Advertisers ( 10,000 visitors / $10.00 ) Publishers ( Earn up to $33.00 / 1,000 views )</p>
+                    <button style="font-family: 'Montserrat', sans-serif; font-size: 25px; background-color: #FFD337; cursor: default; color: #6D6D6D; margin: 5px 5px 5px 0; padding: 6px 16px; border: none;" disabled="disabled" id="continueButton" onclick="continueClick();">Continue in 5</button>
+                </div>
+            </div>
+            <div style="display: inline-block;">
+                <h2 style="font-family: 'Montserrat', sans-serif; margin: 0px 0px 6px 0px; position:absolute; bottom: 0px; color: #6D6D6D; font-weight: 200;" id="ar">2 ads remaining</h2>
+            </div>
+        </div>
+        <iframe id='player' style='width:100%; position:absolute; top:68px; left:0px; border: none; height:calc(100% - 68px);' src=''></iframe>
+        <script>
+			var currentVideo = 0;
+			document.getElementById('player').src = "https://www.youtube.com/embed/" + videos[currentVideo] + "?enablejsapi=1";
+			document.getElementById('ar').innerHTML = (videos.length - currentVideo - 1) + " ads remaining";
+			
+			var player, playing = false, speed = 1;
+			var time = 10;
+            
+			function continueClick() {
+				currentVideo++;
+				if(currentVideo >= videos.length) {
+					document.location.href = shortenedLink;
+					return;
+				}
+				
+				document.getElementById('player').src = "https://www.youtube.com/embed/" + videos[currentVideo] + "?enablejsapi=1";
+				
+				document.getElementById('ar').innerHTML = (videos.length - currentVideo - 1) + " ads remaining";
+				document.getElementById('continueButton').innerHTML = "Play the video to continue";
+				document.getElementById('continueButton').disabled = true;
+				document.getElementById("continueButton").style.cursor = "initial";
+				
+				clearInterval(interval);
+				
+				time = 10;
+				playing = false;
+				
+                document.getElementById("continueButton").innerHTML = "Play the video to continue";
+                player = new YT.Player('player', {
+                    height: getComputedStyle(document.getElementById('player')).height,
+                    width: getComputedStyle(document.getElementById('player')).width,
+                    events: {
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+			}
+			
+			function onYouTubeIframeAPIReady() {
+                document.getElementById("continueButton").innerHTML = "Play the video to continue";
+                player = new YT.Player('player', {
+                    height: getComputedStyle(document.getElementById('player')).height,
+                    width: getComputedStyle(document.getElementById('player')).width,
+                    events: {
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+
+            function onPlayerStateChange(event) {
+                if (event.data == YT.PlayerState.PLAYING) {
+                    speed = 1;
+                    if (!playing) {
+                        playing = true;
+                        interval = setInterval(function () {
+                            if (time <= 0) {
+                                document.getElementById("continueButton").innerHTML = "Continue";
+                                document.getElementById("continueButton").disabled = false;
+                                document.getElementById("continueButton").style.cursor = "pointer";
+                            } else {
+                                document.getElementById("continueButton").innerHTML = "Continue in " + time;
+                                time -= speed;
+                            }
+                        }, 1000);
+                    }
+                } else if (event.data == YT.PlayerState.PAUSED) {
+                    speed = 0;
+                }
+            }
+        </script>
+        <script src="https://www.youtube.com/iframe_api"></script>
+    </div>
+        <div style="position: absolute; bottom: 0px; left: 0px; z-index: 999">
+            <script src="bdv.bidvertiser.com/BidVertiser.dbm?pid=774861&bid=1893079" type="text/javascript"></script>
+             -->
+        </div>
+</body>
+</html>
