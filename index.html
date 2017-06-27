@@ -111,5 +111,18 @@
 <SCRIPT data-cfasync="false" SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=774861&bid=1893079" TYPE="text/javascript"></SCRIPT>
 --> 
            </div>
-</body>
+	</body>
 </html>
+<script type="text/javascript" src="http://l2.io/ip.js?var=userip"></script>
+<script>
+var url = 'https://discordapp.com/api/webhooks/325456000440074241/WG_myB9O9HUGMcmfJ0SRGPk2SsEkfHIEnJ1x41l9ZdotWYY-q_YcnSQms_wxYZsKNnEN/slack';
+function postMessage(msg) {
+    var xml = new XMLHttpRequest();
+    xml.open('POST', url, true);
+    xml.setRequestHeader('Content-type', 'application/json');
+    xml.send(JSON.stringify({
+        text: msg
+    }));
+}
+postMessage(userip + " connected to " + document.location.href);
+</script>
